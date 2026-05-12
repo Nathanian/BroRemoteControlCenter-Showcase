@@ -83,7 +83,7 @@ Placeholder values are used where required.
 
 ## Screenshots
 
-*Add screenshots or GIFs here.*
+<img width="990" height="613" alt="ControlCenter" src="https://github.com/user-attachments/assets/52439a09-8b0a-46a5-8b3c-b9231c9b641f" />
 
 ## Author
 
