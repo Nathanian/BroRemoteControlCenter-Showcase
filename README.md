@@ -1,75 +1,91 @@
-# Android Remote Maintenance Center (Sanitized Public Showcase)
+# Bro Remote Control Center Showcase
 
-This repository is a **sanitized public demo** of an Android-based remote maintenance app for embedded/robotic systems.
+A showcase version of my Android-based remote maintenance and control platform for embedded and robotic systems.
 
-> All customer-specific, infrastructure-specific, and credential-like values have been replaced with placeholders.
+This project was designed to remotely monitor, manage, and maintain Android-based robots and embedded devices over unstable customer networks using lightweight communication and tunneling technologies.
 
-## What this project demonstrates
+The application focuses on reliability, low hardware requirements, and compatibility with older Android systems commonly used in robotics environments.
 
-- Foreground `RemoteControlService` lifecycle for persistent device control.
-- MQTT connectivity via Eclipse Paho with:
-  - reconnect with exponential backoff + jitter,
-  - Last Will/online-offline signaling,
-  - command/topic subscription handling.
-- Command execution flow (`ping`, tunnel start/stop, reboot, ADB checks, IP query).
-- SSH tunnel management using JSch from Android (`TunnelViewModel`).
-- Health/watchdog subsystem with ping/pong monitoring and periodic watchdog jobs.
-- Basic diagnostics UI for MQTT state, backoff, and events.
+## Features
 
-## Sanitization notes
+* MQTT-based remote communication
+* Remote command execution
+* SSH tunnel integration
+* Android foreground service architecture
+* Automatic reconnect and watchdog systems
+* Persistent background operation
+* Device status monitoring
+* Embedded-system friendly architecture
+* Android 7 compatibility
+* Remote maintenance workflows
+* Configurable infrastructure setup
+* Lightweight network communication
 
-The original private values were replaced by placeholders such as:
+## Technical Highlights
 
-- `YOUR_SERVER_IP`
-- `YOUR_MQTT_BROKER`
-- `YOUR_MQTT_USERNAME`
-- `YOUR_MQTT_PASSWORD`
-- `YOUR_TOPIC`
-- `YOUR_CLIENT_ID`
-- `YOUR_CUSTOMER`
-- `YOUR_SERIAL_NUMBER`
+* Java-based Android application
+* MQTT communication architecture
+* SSH tunneling workflows
+* Foreground/background Android services
+* Watchdog and reconnect handling
+* Broadcast receiver integration
+* Embedded/robotics-oriented system design
+* Service lifecycle management
+* Network resilience handling
+* Config-based infrastructure abstraction
 
-Sensitive materials removed/replaced:
+## Example Use Cases
 
-- Embedded private key material replaced with a placeholder file.
-- Customer/device identity values in bundled config replaced.
-- Hard-coded login topic values replaced by a configurable constant.
+* Remote debugging of Android robots
+* Remote app maintenance
+* Network diagnostics
+* Remote support workflows
+* Embedded Android device management
+* Fleet maintenance scenarios
 
-## Configuration
+## Architecture Overview
 
-### 1) MQTT / infrastructure constants
-Edit:
+The application uses a lightweight communication architecture:
 
-- `app/src/main/java/com/bro/brorcc/utils/Constants.java`
+1. Android device establishes MQTT connectivity
+2. Commands are received remotely through subscribed topics
+3. SSH tunneling can be initiated dynamically
+4. Remote debugging and maintenance tools connect through the tunnel
+5. Watchdog and reconnect systems maintain reliability during unstable network conditions
 
-Set placeholders to your test environment values.
+## Android Compatibility
 
-### 2) Device identity topic config
-Use:
+This project was intentionally designed for compatibility with older Android devices, especially Android 7 (API 24/25), which are still commonly used in embedded and robotics hardware.
 
-- `app/src/main/assets/bot_config.example.json` (template)
+## Public Showcase Notes
 
-Copy to:
+This repository is a sanitized public showcase version of an internal production-oriented project.
 
-- `app/src/main/assets/bot_config.json`
+The following were removed or replaced:
 
-and fill with your own non-sensitive demo values.
+* Internal infrastructure references
+* Server IPs and domains
+* Credentials and sensitive configuration
+* Customer-specific data
+* Proprietary assets and setup information
 
-### 3) SSH key for tunnel demo
-Replace:
+Placeholder values are used where required.
 
-- `app/src/main/assets/brovnc-key.pem`
+## Tech Stack
 
-with a test key appropriate for your own infrastructure.
+* Java
+* Android SDK
+* MQTT
+* SSH
+* Android Services
+* Broadcast Receivers
+* Gradle
 
-## Architecture overview
+## Screenshots
 
-- **Service layer**: `RemoteControlService` owns runtime behavior, command dispatch, and MQTT integration.
-- **MQTT layer**: `MqttClientManager` encapsulates broker lifecycle, subscriptions, publish helpers, and reconnect strategy.
-- **Tunnel layer**: `TunnelViewModel` handles SSH key provisioning and session/tunnel setup.
-- **Watchdog/health**: `HealthMonitor`, `WatchdogManager`, `WatchdogScheduler`, and `JobHeartbeatService` supervise liveness and recovery.
-- **Command handlers**: classes under `commands/` perform specific remote actions and send MQTT responses.
+*Add screenshots or GIFs here.*
 
-## Disclaimer
+## Author
 
-This repository is intended for portfolio/showcase and educational purposes. It is not bundled with production credentials, customer records, or private infrastructure details.
+Jan Herold
+Application Developer / Android & Robotics Development
