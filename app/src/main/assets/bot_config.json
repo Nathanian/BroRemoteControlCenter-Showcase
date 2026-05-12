@@ -1,0 +1,6 @@
+{
+  "kunde": "YOUR_CUSTOMER",
+  "modell": "YOUR_DEVICE_MODEL",
+  "androidVersion": "YOUR_ANDROID_VERSION",
+  "seriennummer": "YOUR_SERIAL_NUMBER"
+}

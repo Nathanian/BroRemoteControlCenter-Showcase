@@ -1,0 +1,12 @@
+// File: scripts/apk-naming.gradle (Legacy Version)
+// File: scripts/apk-naming.gradle
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        def appId = variant.applicationId
+        def appSlug = appId.tokenize('.').last()
+        def vName = variant.versionName
+
+        // Results in: brokiosk4sora-1.0.apk
+        output.outputFileName = "${appSlug}-${vName}.apk"
+    }
+}

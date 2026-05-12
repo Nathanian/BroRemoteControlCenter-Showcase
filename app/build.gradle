@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.bro.brorcc'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.bro.brorcc"
+        minSdk 24
+        //noinspection OldTargetApi
+        targetSdk 34
+        versionCode 7
+        versionName "1.7"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation libs.material
+    implementation libs.paho.client
+    implementation libs.localbroadcastmanager
+
+    implementation libs.appcompat
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    testImplementation libs.robolectric
+    testImplementation libs.test.core
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+    implementation libs.jsch
+    implementation libs.bcprov.jdk15on
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    testImplementation libs.mockito.core
+}
+
+apply from: 'scripts/apk-naming.gradle'
+apply from: 'scripts/json-generator.gradle'

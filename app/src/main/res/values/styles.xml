@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.BroRCC.DashboardDevice" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/status_neutral_grey</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="TextAppearance.BroRCC.CardTitle" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.BroRCC.StatusValue" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/status_neutral_grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <style name="TextAppearance.BroRCC.LogText" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android may stop the remote control service to save power. Granting an exemption keeps BroRCC responsive."/>
+
+    <Button
+        android:id="@+id/btnRequestIgnoreBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Request Battery Exemption"/>
+
+    <TextView
+        android:id="@+id/txtServiceState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Service state"/>
+
+    <TextView
+        android:id="@+id/txtNetworkState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Network state"/>
+
+    <TextView
+        android:id="@+id/txtPendingAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pending alarm"/>
+
+    <TextView
+        android:id="@+id/txtNextJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Next job"/>
+
+    <TextView
+        android:id="@+id/txtHealthConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Health config"/>
+
+    <TextView
+        android:id="@+id/txtBackoff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Backoff"/>
+
+    <TextView
+        android:id="@+id/txtHeartbeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Last heartbeat: unknown"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/txtLogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textIsSelectable="true"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtTips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Tips for OEMs:\n- Enable auto-start for BroRCC\n- Disable vendor battery killers\n- Lock app in recents to keep it running"/>
+
+</LinearLayout>

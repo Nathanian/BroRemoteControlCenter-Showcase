@@ -1,0 +1,80 @@
+// File: scripts/json-generator.gradle
+import groovy.json.JsonOutput
+
+android.applicationVariants.all { variant ->
+    def capName = variant.name.capitalize()
+    def apkTask = variant.assembleProvider
+
+    // --- EXTRACT VALUES HERE (Configuration Phase) ---
+    // Extracting these variables now prevents the task from
+    // referencing the 'variant' object during execution.
+    def appId = variant.applicationId
+    def vName = variant.versionName
+    def vCode = variant.versionCode
+    def bt = variant.buildType.name
+    def appSlug = appId.tokenize('.').last()
+
+    // Determine the directory where the APK will be created
+    // We use variant.outputs during configuration to get the file path
+    def outputDir = variant.outputs.first().outputFile.parentFile
+
+    // Use current project directory for paths
+    def buildDir = project.layout.buildDirectory.asFile.get()
+
+    def generateTask = tasks.register("generateUpdateJson${capName}") {
+        // Explicitly tell Gradle which properties this task depends on
+        // This makes the task compatible with the Configuration Cache
+        inputs.property("appId", appId)
+        inputs.property("vName", vName)
+        inputs.property("vCode", vCode)
+        inputs.property("bt", bt)
+
+        doLast {
+            // 1. Define Paths
+            // Note: We are using the variables extracted above, NOT the 'variant' object
+            def expectedApkName = "${appSlug}-${vName}.apk"
+            def apkFile = new File(outputDir, expectedApkName)
+
+            def deployDir = new File(buildDir, "outputs/deploy")
+            def apksDir = new File(deployDir, "apks")
+            apksDir.mkdirs()
+
+            // 2. Copy APK to deploy folder
+            if (apkFile.exists()) {
+                ant.copy(file: apkFile, tofile: new File(apksDir, expectedApkName))
+                println "✔ APK copied to: ${apksDir.absolutePath}/${expectedApkName}"
+            } else {
+                // Fallback: search for any APK in that folder
+                def anyApk = outputDir.listFiles()?.find { it.name.endsWith(".apk") }
+                if (anyApk) {
+                    ant.copy(file: anyApk, tofile: new File(apksDir, expectedApkName))
+                    println "✔ APK (fallback) copied and renamed to: ${expectedApkName}"
+                } else {
+                    throw new GradleException("Could not find APK in ${outputDir.absolutePath}")
+                }
+            }
+
+            // 3. Generate JSON
+            def json = [
+                    "package" : appId,
+                    "name"    : appSlug,
+                    "versions": [[
+                                         "versionName": vName,
+                                         "versionCode": vCode,
+                                         "apk_url"    : "apks/${expectedApkName}",
+                                         "changelog"  : "robust",
+                                         "date"       : new Date().format('yyyy-MM-dd')
+                                 ]]
+            ]
+
+            def jsonFile = new File(deployDir, "${appSlug}-${bt}.json")
+            jsonFile.text = JsonOutput.prettyPrint(JsonOutput.toJson(json))
+
+            println "✔ CUSTOM JSON generated at: ${jsonFile.absolutePath}"
+        }
+    }
+
+    apkTask.configure {
+        finalizedBy generateTask
+    }
+}

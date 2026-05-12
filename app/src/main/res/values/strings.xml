@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">BroRCC</string>
+
+    <!-- Command strings -->
+    <string name="cmd_start_tunnel">Tunnel starten</string>
+    <string name="cmd_stop_tunnel">Tunnel stoppen</string>
+    <string name="cmd_stop_tunnel_alt">Tunnel beenden</string>
+    <string name="cmd_restart_adb">restartAdb</string>
+    <string name="cmd_reboot">reboot</string>
+    <string name="cmd_adb_reboot">adb reboot</string>
+    <string name="cmd_restart_adb_alt">restart adb</string>
+    <string name="cmd_ping">ping</string>
+    <string name="cmd_check_adb_port">check adb port</string>
+    <string name="cmd_get_ip">get ip</string>
+    <string name="cmd_ip">ip</string>
+
+    <!-- Dashboard strings -->
+    <string name="dashboard_master_toggle">Remote Control Service</string>
+    <string name="dashboard_core_service">Core Service</string>
+    <string name="dashboard_mqtt_broker">MQTT Broker</string>
+    <string name="dashboard_ssh_tunnel">SSH Tunnel</string>
+    <string name="dashboard_adb_link">ADB Link</string>
+    <string name="dashboard_tab_events">Events</string>
+    <string name="dashboard_tab_tunnel">Tunnel Log</string>
+    <string name="dashboard_tab_mqtt">MQTT Log</string>
+    <string name="dashboard_device_loading">Resolving device identifier…</string>
+
+    <!-- Status strings -->
+    <string name="status_unknown">UNKNOWN</string>
+    <string name="status_running">RUNNING</string>
+    <string name="status_stopped">STOPPED</string>
+    <string name="status_connected">CONNECTED</string>
+    <string name="status_disconnected">DISCONNECTED</string>
+    <string name="status_connecting">CONNECTING</string>
+    <string name="status_failed">FAILED</string>
+    <string name="status_open">OPEN</string>
+    <string name="status_closed">CLOSED</string>
+
+    <!-- Accessibility -->
+    <string name="cd_core_service">Core service status</string>
+    <string name="cd_mqtt_broker">MQTT broker status</string>
+    <string name="cd_tunnel">SSH tunnel status</string>
+    <string name="cd_adb_link">ADB link status</string>
+
+    <!-- Actions -->
+    <string name="action_minimize">Minimize</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_diagnostics">Diagnostics</string>
+    <string name="action_exit">Exit</string>
+
+    <!-- Event log -->
+    <string name="event_service_started">Core service started</string>
+    <string name="event_service_stopped">Core service stopped</string>
+    <string name="event_service_start_requested">Remote control service start requested</string>
+    <string name="event_service_stop_requested">Remote control service stop requested</string>
+    <string name="event_mqtt_connected">MQTT broker connected</string>
+    <string name="event_mqtt_disconnected">MQTT broker disconnected</string>
+    <string name="event_mqtt_failure">MQTT issue: %1$s</string>
+    <string name="event_tunnel_state">Tunnel state: %1$s</string>
+    <string name="event_adb_connected">ADB link connected</string>
+    <string name="event_adb_disconnected">ADB link disconnected</string>
+    <string name="event_device_identifier_loaded">Device identifier %1$s</string>
+    <string name="events_empty">No events yet.</string>
+</resources>
